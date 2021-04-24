@@ -1,0 +1,112 @@
+version: "3"
+
+services:
+  node0:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20200:20200"
+      - "8545:8545"
+      - "30300:30300"
+    working_dir: /data
+    volumes:
+      - ./node0:/data
+    container_name: node0
+    command: /usr/local/bin/fisco-bcos -c config.ini
+
+  node1:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20201:20915"
+      - "8546:8915"
+      - "30301:30915"
+    working_dir: "/data"
+    volumes:
+      - ./node1:/data
+    container_name: node1
+    command: /usr/local/bin/fisco-bcos -c config.ini
+    depends_on:
+      - "node0"
+
+  node2:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20202:20916"
+      - "8547:8916"
+      - "30302:30916"
+    working_dir: "/data"
+    volumes:
+      - ./node2:/data
+    container_name: node2
+    command: /usr/local/bin/fisco-bcos -c config.ini
+    depends_on:
+      - "node1"
+
+  node3:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20203:20917"
+      - "8548:8917"
+      - "30303:30917"
+    working_dir: "/data"
+    volumes:
+      - ./node3:/data
+    container_name: node3
+    command: /usr/local/bin/fisco-bcos -c config.ini
+    depends_on:
+      - "node2"
+
+  node4:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20204:20918"
+      - "8549:8918"
+      - "30304:30918"
+    working_dir: "/data"
+    volumes:
+      - ./node4:/data
+    container_name: node4
+    command: /usr/local/bin/fisco-bcos -c config.ini
+    depends_on:
+      - "node3"
+
+  node5:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20205:20919"
+      - "8550:8919"
+      - "30305:30919"
+    working_dir: "/data"
+    volumes:
+      - ./node5:/data
+    container_name: node5
+    command: /usr/local/bin/fisco-bcos -c config.ini
+    depends_on:
+      - "node4"
+
+  node6:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20206:20920"
+      - "8551:8920"
+      - "30306:30920"
+    working_dir: "/data"
+    volumes:
+      - ./node6:/data
+    container_name: node6
+    command: /usr/local/bin/fisco-bcos -c config.ini
+    depends_on:
+      - "node5"
+
+  node7:
+    image: fiscoorg/fiscobcos:latest
+    ports:
+      - "20207:20921"
+      - "8552:8921"
+      - "30307:30921"
+    working_dir: "/data"
+    volumes:
+      - ./node7:/data
+    container_name: node7
+    command: /usr/local/bin/fisco-bcos -c config.ini
+    depends_on:
+      - "node6"
